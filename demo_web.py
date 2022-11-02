@@ -13,34 +13,38 @@ from stable_diffusion_engine import StableDiffusionEngine
 # scheduler
 from diffusers import PNDMScheduler
 
+image_logo = Image.open("logo/pi_logo_blanco.png")
 
 def run(engine):
-    st.title("Demo: Image to text")
+    st.title("Demo: Texto a Imagen")
     with st.form(key="request"):
         with st.sidebar:
-            prompt = st.text_area(label='Enter prompt')
+            
+            st.image(image_logo)
+
+            prompt = st.text_area(label="Ingrese el texto")
 
             num_inference_steps = st.select_slider(
-                label='num_inference_steps',
+                label='iteraciones',
                 options=range(1, 150),
                 value=32
             )
 
             guidance_scale = st.select_slider(
-                label='guidance_scale',
+                label='orientación',
                 options=range(1, 21),
                 value=7
             )
 
             strength = st.slider(
-                label='strength',
+                label='robustez',
                 min_value = 0.0,
                 max_value = 1.0,
                 value = 0.5
             )
 
             seed = st.number_input(
-                label='seed',
+                label='semilla',
                 min_value = 0,
                 max_value = 2 ** 31,
                 value = random.randint(0, 2 ** 31)
