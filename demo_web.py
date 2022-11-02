@@ -27,20 +27,20 @@ def run(engine):
             num_inference_steps = st.select_slider(
                 label='iteraciones',
                 options=range(1, 150),
-                value=32
+                value=10
             )
 
             guidance_scale = st.select_slider(
                 label='orientación',
                 options=range(1, 21),
-                value=7
+                value=5
             )
 
             strength = st.slider(
                 label='robustez',
                 min_value = 0.0,
                 max_value = 1.0,
-                value = 0.5
+                value = 0.3
             )
 
             seed = st.number_input(
